@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Auction System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Online Auction System</h1>
+        
+        <div class="login-section">
+            <h2>Login</h2>
+            <select id="userType">
+                <option value="seller">Seller</option>
+                <option value="buyer">Buyer</option>
+                <option value="admin">Admin</option>
+            </select>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+        
+        <div class="dashboard seller-dashboard hidden">
+            <h2>Seller Dashboard</h2>
+            <button onclick="toggleAddProduct()">Add Product</button>
+            <button onclick="toggleTrackPackage()">Track Package</button>
+            <button onclick="logout()">Logout</button>
+
+            <div class="add-product hidden">
+                <h3>Add Product</h3>
+                <input type="text" id="productName" placeholder="Product Name">
+                <input type="text" id="category" placeholder="Category">
+                <textarea id="description" placeholder="Description"></textarea>
+                <input type="number" id="minBid" placeholder="Minimum Bid">
+                <input type="number" id="maxBid" placeholder="Maximum Bid">
+                <button onclick="addProduct()">Add Product</button>
+            </div>
+
+            <div class="track-package hidden">
+                <h3>Track Package</h3>
+                <input type="text" id="productId" placeholder="Product ID">
+                <button onclick="trackPackage()">Track</button>
+                <div id="trackingResult"></div>
+            </div>
+        </div>
+        
+        <div class="dashboard buyer-dashboard hidden">
+            <h2>Buyer Dashboard</h2>
+            <button onclick="viewProducts()">View Products</button>
+            <button onclick="toggleTrackPackageBuyer()">Track Package</button>
+            <button onclick="logout()">Logout</button>
+
+            <div class="view-products hidden" id="productList">
+                <h3>Available Products</h3>
+                <input type="text" id="productToBuy" placeholder="Product ID to Buy">
+                <button onclick="buyProduct()">Buy Product</button>
+            </div>
+
+            <div class="track-package-buyer hidden">
+                <h3>Track Package</h3>
+                <input type="text" id="productIdBuyer" placeholder="Product ID">
+                <button onclick="trackPackageBuyer()">Track</button>
+                <div id="trackingResultBuyer"></div>
+            </div>
+        </div>
+        
+        <div class="dashboard admin-dashboard hidden">
+            <h2>Admin Dashboard</h2>
+            <button onclick="logout()">Logout</button>
+            <div id="allProductsList">
+                <h3>All Products for Approval</h3>
+                <!-- Products for Admin approval will be listed here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
